@@ -1,25 +1,29 @@
-cmake_minimum_required(VERSION 3.12)
-# Pull in SDK (must be before project)
+cmake_minimum_required(VERSION 3.13)
+
+# 1. Pull in SDK (Make sure pico_sdk_import.cmake is in this folder!)
 include(pico_sdk_import.cmake)
-include(pico_extras_import_optional.cmake)
-project(pico_examples C CXX ASM)
+
+project(Rainbow-Dash C CXX ASM)
+
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
-set(PICO_EXAMPLES_PATH ${PROJECT_SOURCE_DIR})
-# Initialize the SDK
+
+# 2. Initialize the SDK
 pico_sdk_init()
-include(example_auto_set_url.cmake)
+
+# 3. Standard Pico compiler flags
 add_compile_options(-Wall
-        -Wno-format          # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
-        -Wno-unused-function # we have some for the docs that aren't called
-        )
+        -Wno-format
+        -Wno-unused-function
+)
+
 if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
     add_compile_options(-Wno-maybe-uninitialized)
 endif()
+
+# 4. Add your project subdirectories
 add_subdirectory(BNO08x_Pico_Library)
 add_subdirectory(TMC429)
 add_subdirectory(blink)
 add_subdirectory(imutesting)
 add_subdirectory(steppertesting)
-
-
