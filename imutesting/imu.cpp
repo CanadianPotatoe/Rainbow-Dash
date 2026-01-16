@@ -6,12 +6,12 @@
 
 int main() {
     stdio_init_all();
-    i2c_inst_t* i2c_port = i2c0;
+    i2c_inst_t* i2c_port = i2c1;
     i2c_init(i2c_port, 400000);
-    gpio_set_function(4, GPIO_FUNC_I2C);
-    gpio_set_function(5, GPIO_FUNC_I2C);
-    gpio_pull_up(4);
-    gpio_pull_up(5);
+    gpio_set_function(11, GPIO_FUNC_I2C);
+    gpio_set_function(10, GPIO_FUNC_I2C);
+    gpio_pull_up(10);
+    gpio_pull_up(11);
 
     BNO08x IMU;
 

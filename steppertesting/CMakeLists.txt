@@ -9,6 +9,8 @@ target_link_libraries(steppertesting
     TMC429
     hardware_pwm
     hardware_clocks
+    hardware_i2c
+    BNO08x_Pico_Library
 )
 
 target_compile_features(steppertesting PUBLIC cxx_std_17)
